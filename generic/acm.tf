@@ -4,8 +4,8 @@ module "acm" {
   domain_name      = var.certificate_domain_name
   hosted_zone_name = var.hosted_zone_name
   certificate_name = "wildcard.${var.hosted_zone_name}"
-  environment      = "prod"
-  description      = "Wildcard certificate for example.play-hooq.tv"
+  environment      = "play"
+  description      = "Wildcard certificate for mywebapplication.ml"
   product_domain   = "transport-api"
 }
 

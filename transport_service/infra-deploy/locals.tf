@@ -9,7 +9,7 @@ locals {
   host_header_listener_rule= ["${var.service_name}.${var.hosted_zone_name}"]
   path_pattern_listener_rules = [
     {
-      path_pattern_values = "/students/*"
+      path_pattern_values = "/city-navigation/v1/*"
     }
   ]
 

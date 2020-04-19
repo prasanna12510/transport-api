@@ -10,7 +10,9 @@ import com.cloudsre.services.transport_service.domain.Stop;
 
 public interface StopRepository extends JpaRepository<Stop, Long> {
 	
-	@Query(value = "select * from stop where x=?2 and y=?3 order by stop_id", nativeQuery = true)
+	@Query(value = "select * from stop where x=:x and y=:y order by stop_id", nativeQuery = true)
 	Optional<Stop> getStopByCoordinates(int x, int y);
+	
+	
 
 }

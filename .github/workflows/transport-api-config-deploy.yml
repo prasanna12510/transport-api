@@ -1,13 +1,13 @@
-name: student-api-config-pipeline
+name: transport-api-config-pipeline
 on:
   push:
     tags:
-      - STUDENT-API-PLAY-CONFIG-*
+      - TRANSPORT-API-PLAY-CONFIG-*
     paths:
-      - student_service/config-deploy/**"
+      - transport_service/config-deploy/**"
 
 jobs:
-  student-api-config-play-job:
+  transport-api-config-play-job:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout public repo
@@ -19,9 +19,9 @@ jobs:
       - name: Get the latest terraform version
         run: make terraform-install
 
-      - name: Apply terraform student-api config
+      - name: Apply terraform transport-api config
         run: make terraform-apply
-        working-directory: student_service/config-deploy/
+        working-directory: transport_service/config-deploy/
         env:
           TF_IN_AUTOMATION: true
           TF_WORKSPACE: play
@@ -29,9 +29,9 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_KEY }}
           TF_CLOUD_TOKEN: ${{ secrets.TF_CLOUD_TOKEN }}
 
-      - name: Configs for student_service secrets
+      - name: Configs for transport_service secrets
         run: make ansible-apply
-        working-directory: student_service/config-deploy/
+        working-directory: transport_service/config-deploy/
         env:
           ANSIBLE_VAULT_PASSWORD_FILE: vault_env
           ANSIBLE_VAULT_PASSWORD: ${{ secrets.ANSIBLE_VAULT_PASSWORD }}

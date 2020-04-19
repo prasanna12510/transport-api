@@ -5,11 +5,11 @@ variable "env" {
   default = {
 
     prod = {
-      cidr                 = "192.168.0.0/24"
-      cidrs_public         = "192.168.0.0/28,192.168.0.16/28,192.168.0.32/28"
-      cidrs_private        = "192.168.0.48/28,192.168.0.64/28,192.168.0.80/28"
+      cidr                 = "192.168.1.0/24"
+      cidrs_public         = "192.168.1.0/28,192.168.1.16/28,192.168.1.32/28"
+      cidrs_private        = "192.168.1.48/28,192.168.1.64/28,192.168.1.80/28"
       ec2_root_volume_size = "20"
-      ec2_instance_type    = "m5.large"
+      ec2_instance_type    = "t3.medium"
       sns_topic_name       = "transport-api-cloudwatch-alarm"
       lambda_name          = "transport-api-cloudwatch-slack-alerts"
       slack_channel_name   = "transport-api-alerts"
@@ -147,7 +147,7 @@ variable "tag" {
 }
 
 variable "hosted_zone_name" {
-  default = "prod-hooq.tv"
+  default = "mywebapplication.ml"
 }
 #s3 alb logs
 variable "acl"{

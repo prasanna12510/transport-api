@@ -12,21 +12,21 @@ aws_s3_bucket:
 aws_nat_gateway:
 aws_eip:
 aws_internet_gateway:
-  - id: NOT(igw-0e53eeaf707a1560d)
+  - id: NOT(igw-f0015594)
 aws_security_group:
-  - id: NOT(sg-072e7b30119c16f54)
+  - id: NOT(sg-b9ff75c3 | sg-07abb62ed7819ff02 | sg-0609a82c80f924a)
 aws_subnet:
-  - id: NOT(subnet-00c536fca42277569|subnet-0ce640138a4ac47b0)
+  - id: NOT(subnet-55223b32 | subnet-245c556d | subnet-bddf0be4)
 aws_vpc:
   - id: NOT(vpc-0d2bfc162cddfe3c5|vpc-0e93579f242b04db6)
 aws_vpc_endpoint:
 aws_network_acl:
-  - id: NOT(acl-06ca2cda7ba0a1250)
+  - id: NOT(acl-6fb66809)
 aws_route_table:
-  - id: NOT(rtb-0a578174304758256|rtb-0e4f1a3a3d9b571bf)
+  - id: NOT(rtb-0cd56d6a)
 aws_network_interface:
 aws_route53_zone:
-  - id: NOT(Z00020581UIDEFUOIV96B)
+  - id: NOT(Z0726841H51TWV79TM8R)
 # aws_iam_group:
 # aws_iam_instance_profile:
 # aws_iam_policy:

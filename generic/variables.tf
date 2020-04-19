@@ -1,10 +1,10 @@
 #route53 variables
 variable "hosted_zone_name" {
-  default = "prod-hooq.tv"
+  default = "mywebapplication.ml"
 }
 
 variable "certificate_domain_name" {
-  default = "*.prod-hooq.tv"
+  default = "*.mywebapplication.ml"
 }
 
 #s3 bucket variables

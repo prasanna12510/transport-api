@@ -38,7 +38,7 @@ public class LineService {
 	@Autowired
 	private TimeRepository timeRepository;
 
-	private static final String TEMPLATE = "{\n" + "  \"minutesDelayed\": \"%s\"\n" + "}";
+	private static final String TEMPLATE = "%s minutes delayed";
 
 	public Optional<Line> getLine(long id) {
 		return lineRepository.findById(id);
@@ -86,7 +86,6 @@ public class LineService {
 
 		List<Time> timesForStop = timeRepository.getTimeByStopId(currentStop.get().getStopId());
 
-		Timestamp minTimestamp = DateUtils.converToTimeStamp("00:00:00");
 
 		List<Line> nextArrivalLines = new ArrayList<>();
 
@@ -97,9 +96,8 @@ public class LineService {
 					.findByLineName(optionalTimeForLine.get().getLineName());
 
 			if (getactualArrivalTime(time.getTime(), optionalDelayForLine)
-					.after(DateUtils.converToTimeStamp(currentTime)) && minTimestamp.compareTo(time.getTime()) > 0) {
+					.after(DateUtils.converToTimeStamp(currentTime))) {
 
-				minTimestamp = (Timestamp) time.getTime();
 
 				nextArrivalLines.add(optionalTimeForLine.get());
 			} // if

@@ -1,16 +1,16 @@
-name: student-api-code-deploy
+name: transport-api-code-deploy
 on:
   push:
     branches:
       - master
     tags:
-      - STUDENT-API-PLAY-CODE-*
+      - TRANSPORT-API-PLAY-CODE-*
     paths:
-      - "student_service/code-deploy/**"
-      - "student_service/source-code/**"
+      - "transport_service/code-deploy/**"
+      - "transport_service/source-code/**"
 
 jobs:
-  student-api-unit-test:
+  transport-api-unit-test:
     name: Test - Units
     runs-on: ubuntu-latest
     steps:
@@ -27,7 +27,7 @@ jobs:
           restore-keys: ${{ runner.os }}-m2
       - name: Build with Maven
         run: mvn clean package -DSkipTests
-        working-directory: student_service/source-code
+        working-directory: transport_service/source-code
 
   sonar:
     name: Test - SonarCloud Scan
@@ -46,14 +46,14 @@ jobs:
           restore-keys: ${{ runner.os }}-m2
       - name: SonarCloud Scan
         run: mvn -B clean verify -Psonar -Dsonar.login=${{ secrets.SONAR_TOKEN }}
-        working-directory: student_service/source-code
+        working-directory: transport_service/source-code
         env:
           GITHUB_TOKEN: ${{ secrets.REPOSITORY_ACCESS_TOKEN }}
 
   artifact:
     name: Publish - GitHub Packages
     runs-on: ubuntu-latest
-    needs: [student-api-unit-test,sonar]
+    needs: [transport-api-unit-test,sonar]
 
     steps:
       - uses: actions/checkout@v1
@@ -69,15 +69,15 @@ jobs:
           restore-keys: ${{ runner.os }}-m2
       - name: Publish artifact on GitHub Packages
         run: mvn -B clean deploy -DskipTests
-        working-directory: student_service/source-code
+        working-directory: transport_service/source-code
         env:
           GITHUB_TOKEN: ${{ secrets.REPOSITORY_ACCESS_TOKEN }}
 
 
-  student-api-image-build:
+  transport-api-image-build:
     name: Publish - Docker Hub
     runs-on: ubuntu-latest
-    needs: [student-api-unit-test,sonar]
+    needs: [transport-api-unit-test,sonar]
     steps:
       - uses: actions/checkout@v2
       - name: Set up JDK 1.8
@@ -92,7 +92,7 @@ jobs:
 
       - name: Build docker image
         run : mvn install dockerfile:build
-        working-directory: student_service/source-code
+        working-directory: transport_service/source-code
         env:
           MASTER_COMMIT_ID: ${{ toJson(github.sha) }}
 
@@ -103,12 +103,12 @@ jobs:
         env:
           MASTER_COMMIT_ID: ${{ toJson(github.sha) }}
           DOCKER_USERNAME: prasanna1994
-          DOCKER_REPO: student-api
+          DOCKER_REPO: transport-api
 
-  student-api-ecs-deployment:
+  transport-api-ecs-deployment:
     name: Deploy to ECS
     runs-on: ubuntu-latest
-    needs: student-api-image-build
+    needs: transport-api-image-build
     steps:
       - name: checkout public repo
         uses: actions/checkout@master
@@ -120,7 +120,7 @@ jobs:
         run: |
           export APP_TAG=`sed -e 's/^"//' -e 's/"$//' <<<"$MASTER_COMMIT_ID" | cut -c1-7` && sed -i -e "s/APP_TAG/$APP_TAG/g" *.tf
           make terraform-apply
-        working-directory: student_service/code-deploy/
+        working-directory: transport_service/code-deploy/
         env:
           TF_IN_AUTOMATION: true
           TF_WORKSPACE: play

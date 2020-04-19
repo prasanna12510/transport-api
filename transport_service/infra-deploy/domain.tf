@@ -16,6 +16,6 @@ module "transport_service_route53_record" {
 #######################################################  OUTPUTS #######################################################
 
 output "transport_service_domain" {
-  value = "${module.transport_service_route53_record.dns_record_name}.${terraform.workspace}-hooq.tv"
+  value = "${module.transport_service_route53_record.dns_record_name}.mywebapplication.ml"
 
 }

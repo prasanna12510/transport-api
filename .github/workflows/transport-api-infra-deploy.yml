@@ -1,15 +1,15 @@
-name: student-api-infra-deploy
+name: transport-api-infra-deploy
 on:
  push:
    branches:
      - master
    tags:
-     - STUDENT-API-PLAY-INFRA-*
+     - TRANSPORT-API-PLAY-INFRA-*
    paths:
-     - "student_service/infra-deploy/**"
+     - "transport_service/infra-deploy/**"
 
 jobs:
-  student-api-infra-play-deployment:
+  transport-api-infra-play-deployment:
     runs-on: ubuntu-latest
     steps:
 
@@ -22,9 +22,9 @@ jobs:
       - name: Get the latest terraform version
         run: make terraform-install
 
-      - name: Apply terraform student-api infra
+      - name: Apply terraform transport-api infra
         run: make terraform-apply
-        working-directory: student_service/infra-deploy/
+        working-directory: transport_service/infra-deploy/
         env:
           TF_IN_AUTOMATION           : true
           TF_WORKSPACE               : play
