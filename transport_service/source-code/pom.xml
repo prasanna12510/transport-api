@@ -160,7 +160,7 @@
 				<sonar.sources>.</sonar.sources>
 				<sonar.inclusions>src/main/java/**,src/main/resources/**</sonar.inclusions>
 				<sonar.exclusions>${code.coverage.exclusions}</sonar.exclusions>
-				<sonar.projectKey>prasanna12510_student-restful-api</sonar.projectKey>
+				<sonar.projectKey>prasanna12510_transport-api</sonar.projectKey>
 				<sonar.organization>prasanna12510</sonar.organization>
 				<sonar.host.url>https://sonarcloud.io</sonar.host.url>
 			</properties>
