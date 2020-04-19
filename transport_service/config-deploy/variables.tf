@@ -5,7 +5,7 @@ variable "availability-zones" {
 variable "env"  {
     default= {
 
-        prod= {
+        play= {
               APP_NAME = "transport-api"
         }
     }
