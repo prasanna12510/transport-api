@@ -1,6 +1,8 @@
 name: transport-api-config-pipeline
 on:
   push:
+    branches:
+      - master
     tags:
       - TRANSPORT-API-PLAY-CONFIG-*
     paths:
