@@ -1,9 +1,9 @@
 ##############locals############
 locals {
 
-  lambda_role_name       = "lambda-slack-role-${terraform.workspace}"
-  lambda_policy_name     = "lambda-slack-policy-${terraform.workspace}"
-  s3_bucket_name         = "lambda-slack-notify-${terraform.workspace}"
+  lambda_role_name       = "transport-api-lambda-slack-role-${terraform.workspace}"
+  lambda_policy_name     = "transport-api-lambda-slack-policy-${terraform.workspace}"
+  s3_bucket_name         = "transport-api-lambda-slack-notify-${terraform.workspace}"
   write_object_to_s3     = [{
                           source = data.archive_file.notify_slack[0].output_path
                           key = "notify_slack-${var.commit_sha}.zip"
