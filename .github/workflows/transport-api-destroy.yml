@@ -4,7 +4,8 @@ on:
    tags:
      - TRANSPORT-API-PLAY-DELETE-*
 jobs:
-  destroy-terraform-transport-api:
+  destroy-generic-resources:
+    name: destroy-generic-resources
     runs-on: ubuntu-latest
     steps:
       - name: Checkout public repo
@@ -23,9 +24,20 @@ jobs:
           AWS_SECRET_ACCESS_KEY:  ${{ secrets.AWS_SECRET_KEY }}
           TF_CLOUD_TOKEN: ${{ secrets.TF_CLOUD_TOKEN }}
 
-      - name: Destroy transport-api infra-deploy
+  destroy-terraform-infra-deploy:
+    name: destroy-terraform-infra-deploy
+    runs-on: ubuntu-latest
+    needs : destroy-generic-resources
+    steps:
+      - name: Checkout public repo
+        uses: actions/checkout@master
+
+      - name: Get the latest terraform version
+        run: make terraform-install
+
+      - name: Destroy transport-api infra resources
         run: make terraform-destroy
-        working-directory: transport_service/infra-deploy/
+        working-directory: transport_service/infra-deploy
         env:
           TF_IN_AUTOMATION: true
           TF_WORKSPACE: play
@@ -33,12 +45,44 @@ jobs:
           AWS_SECRET_ACCESS_KEY:  ${{ secrets.AWS_SECRET_KEY }}
           TF_CLOUD_TOKEN: ${{ secrets.TF_CLOUD_TOKEN }}
 
-      - name: Destroy transport-api code-deploy
-        run: make terraform-destroy
-        working-directory: transport_service/code-deploy/
-        env:
-          TF_IN_AUTOMATION: true
-          TF_WORKSPACE: play
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY }}
-          AWS_SECRET_ACCESS_KEY:  ${{ secrets.AWS_SECRET_KEY }}
-          TF_CLOUD_TOKEN: ${{ secrets.TF_CLOUD_TOKEN }}
+   destroy-terraform-config-deploy:
+     name:  destroy-terraform-config-deploy
+     runs-on: ubuntu-latest
+     needs : destroy-terraform-infra-deploy
+     steps:
+       - name: Checkout public repo
+         uses: actions/checkout@master
+
+       - name: Get the latest terraform version
+         run: make terraform-install
+
+       - name: Destroy transport-api config resources
+         run: make terraform-destroy
+         working-directory: transport_service/infra-deploy
+         env:
+           TF_IN_AUTOMATION: true
+           TF_WORKSPACE: play
+           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY }}
+           AWS_SECRET_ACCESS_KEY:  ${{ secrets.AWS_SECRET_KEY }}
+           TF_CLOUD_TOKEN: ${{ secrets.TF_CLOUD_TOKEN }}
+
+    destroy-terraform-code-deploy:
+      name: destroy-terraform-code-deploy
+      runs-on: ubuntu-latest
+      needs :  destroy-terraform-config-deploy
+      steps:
+        - name: Checkout public repo
+          uses: actions/checkout@master
+
+        - name: Get the latest terraform version
+          run: make terraform-install
+
+        - name: Destroy transport-api code-deploy resources
+          run: make terraform-destroy
+          working-directory: transport_service/code-deploy
+          env:
+            TF_IN_AUTOMATION: true
+            TF_WORKSPACE: play
+            AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY }}
+            AWS_SECRET_ACCESS_KEY:  ${{ secrets.AWS_SECRET_KEY }}
+            TF_CLOUD_TOKEN: ${{ secrets.TF_CLOUD_TOKEN }}
