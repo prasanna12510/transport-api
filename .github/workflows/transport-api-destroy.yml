@@ -25,6 +25,7 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY }}
           AWS_SECRET_ACCESS_KEY:  ${{ secrets.AWS_SECRET_KEY }}
           TF_CLOUD_TOKEN: ${{ secrets.TF_CLOUD_TOKEN }}
+          AWS_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
   destroy-terraform-infra-deploy:
     name: destroy-terraform-infra-deploy
     runs-on: ubuntu-latest
@@ -45,6 +46,7 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY }}
           AWS_SECRET_ACCESS_KEY:  ${{ secrets.AWS_SECRET_KEY }}
           TF_CLOUD_TOKEN: ${{ secrets.TF_CLOUD_TOKEN }}
+          AWS_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
   destroy-terraform-config-deploy:
     name: destroy-terraform-config-deploy
     runs-on: ubuntu-latest
@@ -65,6 +67,7 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY }}
           AWS_SECRET_ACCESS_KEY:  ${{ secrets.AWS_SECRET_KEY }}
           TF_CLOUD_TOKEN: ${{ secrets.TF_CLOUD_TOKEN }}
+          AWS_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
   destroy-terraform-code-deploy:
     name: destroy-terraform-code-deploy
     runs-on: ubuntu-latest
@@ -85,3 +88,4 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY }}
           AWS_SECRET_ACCESS_KEY:  ${{ secrets.AWS_SECRET_KEY }}
           TF_CLOUD_TOKEN: ${{ secrets.TF_CLOUD_TOKEN }}
+          AWS_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
