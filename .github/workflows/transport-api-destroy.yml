@@ -1,6 +1,8 @@
 name: terraform-delete-transport-service
 on:
  push:
+   branches:
+     - master
    tags:
      - TRANSPORT-API-PLAY-DELETE-*
 jobs:
