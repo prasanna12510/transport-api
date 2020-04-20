@@ -1,4 +1,4 @@
-# Spring Boot Application for Student-API Portal
+# Spring Boot Application for Transport-API Portal
 transport-api using spring boot
 automated deployment of infrastructure (networking,monitoring,config management) using Terraform   
 
@@ -43,12 +43,12 @@ To monitor and manage your application
 
 |  URL |  Method |
 |----------|--------------|
-|`http://localhost:8080`  						| GET |
+|`http://localhost:8080`  						         | GET |
 |`http://localhost:8080/actuator/`             | GET |
-|`http://localhost:8080/actuator/health`    	| GET |
-|`http://localhost:8080/actuator/info`      	| GET |
-|`http://localhost:8080/actuator/prometheus`| GET |
-|`http://localhost:8080/actuator/httptrace` | GET |
+|`http://localhost:8080/actuator/health`       | GET |
+|`http://localhost:8080/actuator/info`      	 | GET |
+|`http://localhost:8080/actuator/prometheus`   | GET |
+|`http://localhost:8080/actuator/httptrace`    | GET |
 
 
 ### Student API URLs
