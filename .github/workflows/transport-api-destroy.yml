@@ -29,7 +29,6 @@ jobs:
   destroy-terraform-infra-deploy:
     name: destroy-terraform-infra-deploy
     runs-on: ubuntu-latest
-    needs : destroy-generic-resources
     steps:
       - name: Checkout public repo
         uses: actions/checkout@master
@@ -50,7 +49,6 @@ jobs:
   destroy-terraform-config-deploy:
     name: destroy-terraform-config-deploy
     runs-on: ubuntu-latest
-    needs : destroy-terraform-infra-deploy
     steps:
       - name: Checkout public repo
         uses: actions/checkout@master
@@ -71,7 +69,6 @@ jobs:
   destroy-terraform-code-deploy:
     name: destroy-terraform-code-deploy
     runs-on: ubuntu-latest
-    needs : destroy-terraform-config-deploy
     steps:
       - name: Checkout public repo
         uses: actions/checkout@master
