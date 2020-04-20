@@ -13,7 +13,6 @@ automated deployment of infrastructure (networking,monitoring,config management)
 
 * [Postman](https://www.getpostman.com/) - API Development Environment (Testing Documentation)
 
-
 ## Running the application locally
 
 There are several ways to run a Spring Boot application on your local machine. One way is to execute the `main` method in the `com.cloudsre.services.transport_service` class from your IDE.
@@ -60,11 +59,21 @@ To monitor and manage your application
 |`http://localhost:8081/city-navigation/v1/check-delay`                      | GET | |
 |`http://localhost:8081/city-navigation/v1/next-line`                        | GET | |
 
+#### Find a vehicle for a given time and X & Y coordinates
+
+![Alt text](https://github.com/prasanna12510/transport-api/blob/master/doc/img/getLines.png?raw=true "getLines")
+
+#### Return the vehicle arriving next at a given stop
+![Alt text](https://github.com/prasanna12510/transport-api/blob/master/doc/img/getNextArrival.png?raw=true "getNextArrival")
+
+
+#### Indicate if a given line is currently delayed
+![Alt text](https://github.com/prasanna12510/transport-api/blob/master/doc/img/getDelay.png?raw=true "getDelay")
+
+
 
 ## Documentation
 * [Swagger](http://localhost:8081/swagger-ui.html) - Documentation & Testing
-
-
 
 ## packages
 
