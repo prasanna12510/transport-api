@@ -12,7 +12,7 @@
 
 	<groupId>com.cloud-sre.services</groupId>
 	<artifactId>transport-api</artifactId>
-	<version>1.0</version>
+	<version>{revision}</version>
 
 	<name>transport-api</name>
 	<description>restful api transport-service demo project using Spring Boot</description>
