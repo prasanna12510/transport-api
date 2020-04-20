@@ -7,5 +7,5 @@ RUN mvn -B -f pom.xml clean package -DskipTests
 
 FROM openjdk:8-jdk-alpine
 COPY --from=build /workspace/target/*.jar app.jar
-EXPOSE 8080
-ENTRYPOINT ["java","-jar","app.jar"]
+EXPOSE 8081
+ENTRYPOINT ["java","-jar","-Dserver.port=8081","app.jar"]

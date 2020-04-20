@@ -1,5 +1,5 @@
 # Spring Boot Application for Student-API Portal
-student-api using spring boot
+transport-api using spring boot
 automated deployment of infrastructure (networking,monitoring,config management) using Terraform   
 
 ## Built With
@@ -11,12 +11,12 @@ automated deployment of infrastructure (networking,monitoring,config management)
 
 ## External Tools Used
 
-* [Postman](https://www.getpostman.com/) - API Development Environment (Testing Docmentation)
+* [Postman](https://www.getpostman.com/) - API Development Environment (Testing Documentation)
 
 
 ## Running the application locally
 
-There are several ways to run a Spring Boot application on your local machine. One way is to execute the `main` method in the `com.cloudsre.services.student_service` class from your IDE.
+There are several ways to run a Spring Boot application on your local machine. One way is to execute the `main` method in the `com.cloudsre.services.transport_service` class from your IDE.
 
 - Download the zip or clone the Git repository.
 - Unzip the zip file (if you downloaded one)
@@ -55,16 +55,14 @@ To monitor and manage your application
 
 |  URL |  Method | Remarks |
 |----------|--------------|--------------|
-|`http://localhost:8080/students/health`                           | GET | Header `Accept:application/json`
-|`http://localhost:8080/students/1`                                | GET | |
-|`http://localhost:8080/students/1`                                | PUT | |
-|`http://localhost:8080/students`                                  | POST| |
-|`http://localhost:8080/students/1`                                | DELETE | |
+|`http://localhost:8081/city-navigation/v1/health`                           | GET | Header `Accept:application/json`
+|`http://localhost:8081/city-navigation/v1/lines`                            | GET | |
+|`http://localhost:8081/city-navigation/v1/check-delay`                      | GET | |
+|`http://localhost:8081/city-navigation/v1/next-line`                        | GET | |
 
 
 ## Documentation
-* [Swagger](http://localhost:8088/swagger-ui.html) - Documentation & Testing
-![Alt text](https://github.com/prasanna12510/student-restful-api/blob/master/doc/img/swagger-ui-docs.png?raw=true "swagger-ui-docs")
+* [Swagger](http://localhost:8081/swagger-ui.html) - Documentation & Testing
 
 
 
@@ -72,9 +70,11 @@ To monitor and manage your application
 
 - `application` — to communicate with the database;
 - `domain` — to hold our entities;
+- `domain.initializers` — to load data from csv files to entities;
 - `domain.infrastructure` — repository
 - `exception` — security configuration;
 - `presentation` — to hold our business logic;
+- `utils` — helper functions;
 
 - `resources/` - Contains all the static resources, templates and property files.
 - `resources/application.properties` - It contains application-wide properties. Spring reads the properties defined in this file to configure your application. You can define server’s default port, server’s context path, database URLs etc, in this file.
