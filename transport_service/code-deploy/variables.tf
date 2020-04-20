@@ -59,7 +59,7 @@ variable "env" {
 variable "container_memory_reservation" {
   type        = number
   description = "The amount of memory (in MiB) to reserve for the container. If container needs to exceed this threshold, it can do so up to the set container_memory hard limit"
-  default     = 1024
+  default     = 512
 }
 
 variable "port_mappings" {
@@ -74,7 +74,7 @@ variable "port_mappings" {
 variable "container_cpu" {
   type        = number
   description = "The number of cpu units to reserve for the container. This is optional for tasks using Fargate launch type and the total amount of container_cpu of all containers in a task will need to be lower than the task-level cpu value"
-  default     = 512
+  default     = 266
 }
 
 variable "ulimits" {
