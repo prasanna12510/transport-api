@@ -47,7 +47,7 @@ public class LineService {
 	/* Find a vehicle for a given time and X & Y coordinates */
 	public List<Line> getLinesByLocationAndTime(String date, int x, int y) {
 
-		return lineRepository.findVehiclesByTimeAndCoordinates(DateUtils.converToTimeStamp(date), x, y);
+		return lineRepository.findLinesByTimeAndCoordinates(DateUtils.converToTimeStamp(date), x, y);
 
 	}
 
@@ -76,7 +76,7 @@ public class LineService {
 
 		}
 
-		return DateUtils.converToTimeStamp("00:00:00");
+		return null;
 
 	}
 
@@ -94,9 +94,10 @@ public class LineService {
 			Optional<Line> optionalTimeForLine = lineRepository.findByLineId(time.getLineId());
 			Optional<Delay> optionalDelayForLine = delayRepository
 					.findByLineName(optionalTimeForLine.get().getLineName());
-
-			if (getactualArrivalTime(time.getTime(), optionalDelayForLine)
-					.after(DateUtils.converToTimeStamp(currentTime))) {
+			
+			Timestamp actualArrivalTime = getactualArrivalTime(time.getTime(), optionalDelayForLine);
+			
+			if(actualArrivalTime!=null && actualArrivalTime.after(DateUtils.converToTimeStamp(currentTime))){
 
 
 				nextArrivalLines.add(optionalTimeForLine.get());

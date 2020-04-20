@@ -14,7 +14,7 @@ public interface LineRepository extends JpaRepository<Line, Long> {
 	@Query(value = "SELECT l.* FROM line l JOIN time t on  l.line_id=t.line_id "
 			+ "where stop_id=(select stop_id from stop where x=:x and y=:y ) "
 			+ "and time =:time ORDER BY l.line_id", nativeQuery = true)
-	List<Line> findVehiclesByTimeAndCoordinates(Timestamp date, int x, int y);
+	List<Line> findLinesByTimeAndCoordinates(Timestamp time, int x, int y);
 	
 	//return the lineobject by LineId not primaryKey id
 	Optional<Line> findByLineId(Long lineId);
