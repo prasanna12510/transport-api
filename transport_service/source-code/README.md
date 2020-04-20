@@ -54,18 +54,16 @@ To monitor and manage your application
 
 |  URL |  Method | Remarks |
 |----------|--------------|--------------|
-|`http://localhost:8081/city-navigation/v1/health`                           | GET | Header `Accept:application/json`
-|`http://localhost:8081/city-navigation/v1/lines`                            | GET | |
-|`http://localhost:8081/city-navigation/v1/check-delay`                      | GET | |
-|`http://localhost:8081/city-navigation/v1/next-line`                        | GET | |
+|`http://localhost:8081/city-navigation/v1/health`                           | GET |
+|`http://localhost:8081/city-navigation/v1/lines`                            | GET |
+|`http://localhost:8081/city-navigation/v1/check-delay`                      | GET |
+|`http://localhost:8081/city-navigation/v1/next-line`                        | GET |
 
 #### Find a vehicle for a given time and X & Y coordinates
-
 ![Alt text](https://github.com/prasanna12510/transport-api/blob/master/doc/img/getLines.png?raw=true "getLines")
 
 #### Return the vehicle arriving next at a given stop
 ![Alt text](https://github.com/prasanna12510/transport-api/blob/master/doc/img/getNextArrival.png?raw=true "getNextArrival")
-
 
 #### Indicate if a given line is currently delayed
 ![Alt text](https://github.com/prasanna12510/transport-api/blob/master/doc/img/getDelay.png?raw=true "getDelay")
