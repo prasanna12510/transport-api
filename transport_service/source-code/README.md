@@ -50,7 +50,7 @@ To monitor and manage your application
 |`http://localhost:8080/actuator/httptrace`    | GET |
 
 
-### Student API URLs
+### Transport API URLs
 
 |  URL |  Method | Remarks |
 |----------|--------------|--------------|
@@ -68,7 +68,8 @@ To monitor and manage your application
 #### Indicate if a given line is currently delayed
 ![Alt text](https://github.com/prasanna12510/transport-api/blob/master/doc/img/getDelay.png?raw=true "getDelay")
 
-
+### Transport API Deployed URL
+https://transport-api.mywebapplication.ml/city-navigation/v1/health
 
 ## Documentation
 * [Swagger](http://localhost:8081/swagger-ui.html) - Documentation & Testing

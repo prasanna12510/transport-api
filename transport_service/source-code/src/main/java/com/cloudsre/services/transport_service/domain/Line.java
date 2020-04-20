@@ -5,13 +5,20 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
 @Entity
 @Table(name = "line")
+@ApiModel(description = "Details about Lines ")
 public class Line {
     @Id
     @GeneratedValue()
+    @ApiModelProperty(notes = "The database generated Line ID")
     private Long id;
+    @ApiModelProperty(notes = "LineId")
     private Long lineId;
+    @ApiModelProperty(notes = "Linename")
     private String lineName;
 
     public Line(Long lineId, String linenName) {

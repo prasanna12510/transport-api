@@ -5,13 +5,20 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
 @Entity
 @Table(name = "delay")
+@ApiModel(description = "Delay associated with lines. ")
 public class Delay {
     @Id
     @GeneratedValue()
+    @ApiModelProperty(notes = "The database generated Delay ID")
     private Long id;
+    @ApiModelProperty(notes = "Line delay status in minutes")
     private Long delay;
+    @ApiModelProperty(notes = "name of Line Delayed")
     private String lineName;
 
     public Delay(String lineName, Long delay) {

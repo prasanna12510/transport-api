@@ -4,18 +4,27 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
 import java.sql.Timestamp;
 import java.util.Date;
 
 
 @Entity
 @Table(name = "time")
+@ApiModel(description = "details about line arrival time ")
 public class Time {
     @Id
     @GeneratedValue()
+    @ApiModelProperty(notes = "The database generated Time ID")
     private Long id;
+    @ApiModelProperty(notes = "line Id ")
     private Long lineId;
+    @ApiModelProperty(notes = "stop Id")
     private Long stopId;
+    @ApiModelProperty(notes = "regular arrival time for Line")
     private Timestamp time;
 
     public Time(Long lineId, Long stopId, Timestamp time) {

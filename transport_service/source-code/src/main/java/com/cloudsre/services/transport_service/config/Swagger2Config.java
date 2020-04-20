@@ -22,7 +22,7 @@ public class Swagger2Config {
             .build().apiInfo(apiEndPointsInfo());
     }
     private ApiInfo apiEndPointsInfo() {
-        return new ApiInfoBuilder().title("Student Portal REST API using Spring Boot")
+        return new ApiInfoBuilder().title("City Navigation REST API using Spring Boot")
             .description("Student Portal REST API")
             .contact(new Contact("Prasanna Pawar", "www.linkedin.com/in/prasanna-pawar", "prasanna.pawar43@gmail.com"))
             .license("Apache 2.0")

@@ -5,14 +5,22 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
 @Entity
 @Table(name = "stop")
+@ApiModel(description = "stop details ")
 public class Stop {
     @Id
     @GeneratedValue()
+    @ApiModelProperty(notes = "The database generated stop ID")
     private Long id;
+    @ApiModelProperty(notes = "Id for given stop")
     private Long stopId;
+    @ApiModelProperty(notes = "X coordinfate for given stop")
     private int x;
+    @ApiModelProperty(notes = "Y coordinate for given stop")
     private int y;
 
     public Stop(Long stopId, int x, int y) {
