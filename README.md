@@ -4,8 +4,8 @@ Backend Engineering Challenge to solve Transport System Using SpringBoot REST AP
 
 #### AWS API-Architecture
 
-![Alt text](https://github.com/prasanna12510/student-restful-api/blob/master/doc/img/APIArchicture.png?raw=true "AWSArchitecture")
+![Alt text](https://github.com/prasanna12510/transport-api/blob/master/doc/img/APIArchicture.png?raw=true "AWSArchitecture")
 
 #### Application Architecture
 
-![Alt text](https://github.com/prasanna12510/student-restful-api/blob/master/doc/img/ApplicationArchitecture.png?raw=true "APIArchitecture")
+![Alt text](https://github.com/prasanna12510/transport-api/blob/master/doc/img/ApplicationArchitecture.png?raw=true "APIArchitecture")
